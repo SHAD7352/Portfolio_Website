@@ -79,7 +79,7 @@ input {
     text-transform: uppercase;
 }
 
-.signup {
+/*.signup {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +106,7 @@ input {
     margin: 10px 10px 2px;
 }
 
-/* button style */
+
 .btnSignup,
 .btnSignup *,
 .btnSignup :after,
@@ -234,4 +234,4 @@ input {
     to {
         transform: translateY(0);
     }
-}
+}  */
