@@ -1,43 +1,70 @@
-var tablinks = document.getElementsByClassName("tab-links");
-var tabcontents = document.getElementsByClassName("tab-contents");
-
-function opentab(tabname){
-    for(tablink of tablinks){
-        tablink.classList.remove("active-link");
+document.addEventListener("DOMContentLoaded", function () {
+    const words = ["Dot Net Developer", "Full Stack Developer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let currentWord = '';
+    const typingSpeed = 100;
+    const erasingSpeed = 50;
+    const newWordDelay = 2000;
+  
+    function type() {
+        if (charIndex < words[wordIndex].length) {
+            currentWord += words[wordIndex].charAt(charIndex);
+            document.querySelector('.typing-animation').textContent = currentWord;
+            charIndex++;
+            setTimeout(type, typingSpeed);
+        } else {
+            setTimeout(erase, newWordDelay);
+        }
     }
-    for(tabcontent of tabcontents){
-        tabcontent.classList.remove("active-tab");
+  
+    function erase() {
+        if (charIndex > 0) {
+            currentWord = currentWord.slice(0, -1);
+            document.querySelector('.typing-animation').textContent = currentWord;
+            charIndex--;
+            setTimeout(erase, erasingSpeed);
+        } else {
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, typingSpeed + 1100);
+        }
     }
-    event.currentTarget.classList.add( "active-link" );
-    document.getElementById(tabname).classList.add("active-tab");
-}
+  
+    type();
+  });
+  
+  
+  
+  // Animate progress bars
+  const progressBars = document.querySelectorAll('.progress-done');
+  
+  progressBars.forEach(bar => {
+      setTimeout(() => {
+          bar.style.width = bar.getAttribute('data-done') + '%';
+          bar.style.opacity = 1;
+      }, 500);
+  });
+  
+  // Animate circular skills
+  const circles = document.querySelectorAll('.circle');
+  
+  circles.forEach(circle => {
+      let percent = circle.getAttribute('data-percent');
+      circle.style.setProperty('--percent', percent);
+  });
 
 
-var sidemenu = document.getElementById("sidemenu");
-
-function openmenu(){
-    sidemenu.style.right="0";
-    console.log("hello");
-}
-function closemenu(){
-    sidemenu.style.right="-180px";
-}
-// contact form script
-
-const scriptURL = 'https://script.google.com/macros/s/AKfycbx3K6n_mXUAqej6sAXkTEBjQLfBoXDzvJBTpuPl38S3nNivSxS2cNQEtAbLQhMYT0b9dQ/exec'
-const form = document.forms['submit-to-google-sheet']
-const msg = document.getElementById("msg");
-
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => {
-        msg.innerHTML = "Message send successfully"
-        setTimeout(function(){
-            msg.innerHTML= "";
-        }, 5000)
-        form.reset();
-    })
-    .catch(error => console.error('Error!', error.message))
-})
-
+  //Nav bar 
+  var burger = document.querySelector('.burger');
+  var menu = document.querySelector('nav');
+  
+  // Toggle the menu visibility
+  var openMenu = function() {
+      burger.classList.toggle('burger--active');
+      menu.classList.toggle('nav__list--active');
+  };
+  
+  // Add event listener for the burger icon
+  burger.addEventListener('click', openMenu, false);
+  
+  
