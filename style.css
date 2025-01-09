@@ -22,10 +22,9 @@ header {
     z-index: 2;
 }
 
-h3 {
+#portfoliotext {
     font-size: 24px;
-    margin: 0 0 10px;
-    margin-left: -512px;
+    margin: 0 0 10px -512px;
 }
 
 h3 span {
