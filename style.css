@@ -13,11 +13,23 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
     background-color: #09131c;
     padding: 20px 20px;
     position: sticky;
     top: 0;
     z-index: 2;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 0 0 10px;
+    margin-left: -512px;
+}
+
+h3 span {
+    color: #00f0ff;
 }
 
 /* nav animation start*/
@@ -692,15 +704,17 @@ p {
     /* Hide the navigation by default on small screens */
     header {
         display: block;
-        width: 50%;
-        position: absolute;
+        background-color: #0c1a25;
+        /* width: 50%; */
         top: 0;
-        right: 0;
+        right: 23px;
         /* Align the header to the right side */
+        position: absolute;
         justify-content: end;
         transition: all 0.3s ease;
         margin-top: 26px;
     }
+
 
     header:hover {
         display: block;
@@ -708,17 +722,23 @@ p {
 
     nav {
         display: none;
-        top: 0px;
+        top: 0;
         right: 0;
         background-color: rgb(12, 15, 37);
         width: 100%;
         height: 100%;
         padding: 20px;
+        margin: -30px 40px -335px;
+    }
+
+    header:hover+nav {
+        display: block;
+        /* Show the navigation */
     }
 
     nav ul li a {
         text-decoration: none;
-        color: #333;
+        color: #ffffff;
         font-size: 1rem;
         padding: 1rem 0;
         width: 50%;
